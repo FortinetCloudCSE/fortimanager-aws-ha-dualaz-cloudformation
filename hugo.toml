@@ -1,7 +1,7 @@
 # this is a required setting for this theme to appear on https://themes.gohugo.io/
 # change this to a value appropriate for you; if your site is served from a subdirectory
 # set it like "https://example.com/mysite/"
-baseURL = "https://fortinetcloudcse.github.io/UserRepo"
+baseURL = "https://fortinetcloudcse.github.io/fortimanager-aws-ha-dualaz-cloudformation/"
 
 languageCode = "en-US"
 defaultContentLanguage = "en"
@@ -23,7 +23,7 @@ uglyURLs = true     # true -> basic/index.html -> basic.html
 # use this theme ;-)
 theme = ["hugo-theme-relearn"]
 
-title = "Hugo for Fortinet TECWorkshops"
+title = "fortimanager-aws-ha-dualaz-cloudformation"
 
 # We disable this for testing the exampleSite; you must do so too
 # if you want to use the themes parameter disableGeneratorVersion=true;
@@ -183,25 +183,20 @@ enableEmoji = true
 
   [params.author]
   # Author of the site, will be used in meta information
-    name = "Jeff Kopko"
+    name = "Hiruy Aberra"
 
 
-[[menu.shortcuts]]
+[[menu.shortcuts]] 
 name = "<i class='fas fa-graduation-cap'></i> Fortinet Cloud CSE GitHub Org"
 url = "https://github.com/FortinetCloudCSE"
-weight = 10
+weight = 1
 
-[[menu.shortcuts]]
-name = "<i class='fas fa-tools'></i> Fortinet Standard Workshop Guide"
-url = "https://fortinetcloudcse.github.io/UserRepo"
-weight = 20
+[[menu.shortcuts]] 
+name = "<i class='fas fa-chalkboard-teacher'></i> Fortinet in AWS Docs"
+url = "https://docs.fortinet.com/cloud-solutions/aws"
+weight = 2
 
-[[menu.shortcuts]]
-name = "<i class='fas fa-tools'></i> Fortinet Standard Workshop Template Repo"
-url = "https://github.com/FortinetCloudCSE/UserRepo"
-weight = 30
-
-[[menu.shortcuts]]
-name = "<i class='fas fa-tools'></i> Fortinet Hugo reLearn theme - Guide"
-url = "https://mcshelby.github.io/hugo-theme-relearn/index.html"
-weight = 40
+[[menu.shortcuts]] 
+name = "<i class='fas fa-tools'></i> AWS MP Listings for Fortinet"
+url = "https://aws.amazon.com/marketplace/search/results?searchTerms=fortinet"
+weight = 3
