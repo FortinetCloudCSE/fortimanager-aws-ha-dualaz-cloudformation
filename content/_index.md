@@ -1,5 +1,5 @@
 ---
-title: "fortimanager-aws-standalone-cloudformation"
+title: "fortimanager-aws-ha-dualaz-cloudformation"
 weight: 1
 archetype: home
 ---
