@@ -1,6 +1,6 @@
 {
 	"AWSTemplateFormatVersion": "2010-09-09",
-	"Description": "(v8.6) AWS CFT to deploy a FortiManager HA pair into a new VPC",
+	"Description": "(v8.7) AWS CFT to deploy a FortiManager HA pair into a new VPC",
 	"Metadata": {
 		"AWS::CloudFormation::Interface": {
 			"ParameterGroups": [
@@ -222,9 +222,9 @@
 			"Default": "7.4.x",
 			"Description": "Select the verion of FortiManager to use (latest GA AMI will be used)",
 			"AllowedValues": [
-				"7.0.x",
 				"7.2.x",
-				"7.4.x"
+				"7.4.x",
+				"7.6.x"
 			]
 		},
 		"LicenseType": {
@@ -266,15 +266,6 @@
 	},
 	"Mappings": {
 		"FortiManagerAMISearchString": {
-			"7.0.x": {
-				"BYOL": "FortiManager-VM64-AWS *(7.0.*)*|os40mk0fw6472m8ak2lnzp4s",
-				"Flex": "FortiManager-VM64-AWS *(7.0.*)*|os40mk0fw6472m8ak2lnzp4s",
-				"PAYG2Devices": "FortiManager-VM64-AWSONDEMAND *(7.0.*)*|5j3m869sh84tixvmg9br26hkn",
-				"PAYG10Devices": "FortiManager-VM64-AWSONDEMAND *(7.0.*)*|691k7ni0x5sbcj3reejxw3cy1",
-				"PAYG30Devices": "FortiManager-VM64-AWSONDEMAND *(7.0.*)*|8gmpxt177zhq1vhh32l7o69wf",
-				"PAYG100Devices": "FortiManager-VM64-AWSONDEMAND *(7.0.*)*|d3o35cw8hzusqeiv83jl1xuwb",
-				"PAYG500Devices": "FortiManager-VM64-AWSONDEMAND *(7.0.*)*|e5s6s9r3hgizwpe9tavoxwkzv"
-			},
 			"7.2.x": {
 				"BYOL": "FortiManager-VM64-AWS *(7.2.*)*|os40mk0fw6472m8ak2lnzp4s",
 				"Flex": "FortiManager-VM64-AWS *(7.2.*)*|os40mk0fw6472m8ak2lnzp4s",
@@ -292,6 +283,15 @@
 				"PAYG30Devices": "FortiManager-VM64-AWSONDEMAND *(7.4.*)*|8gmpxt177zhq1vhh32l7o69wf",
 				"PAYG100Devices": "FortiManager-VM64-AWSONDEMAND *(7.4.*)*|d3o35cw8hzusqeiv83jl1xuwb",
 				"PAYG500Devices": "FortiManager-VM64-AWSONDEMAND *(7.4.*)*|e5s6s9r3hgizwpe9tavoxwkzv"
+			},
+			"7.6.x": {
+				"BYOL": "FortiManager-VM64-AWS *(7.6.*)*|os40mk0fw6472m8ak2lnzp4s",
+				"Flex": "FortiManager-VM64-AWS *(7.6.*)*|os40mk0fw6472m8ak2lnzp4s",
+				"PAYG2Devices": "FortiManager-VM64-AWSONDEMAND *(7.6.*)*|5j3m869sh84tixvmg9br26hkn",
+				"PAYG10Devices": "FortiManager-VM64-AWSONDEMAND *(7.6.*)*|691k7ni0x5sbcj3reejxw3cy1",
+				"PAYG30Devices": "FortiManager-VM64-AWSONDEMAND *(7.6.*)*|8gmpxt177zhq1vhh32l7o69wf",
+				"PAYG100Devices": "FortiManager-VM64-AWSONDEMAND *(7.6.*)*|d3o35cw8hzusqeiv83jl1xuwb",
+				"PAYG500Devices": "FortiManager-VM64-AWSONDEMAND *(7.6.*)*|e5s6s9r3hgizwpe9tavoxwkzv"
 			}
 		}
 	},
