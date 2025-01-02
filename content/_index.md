@@ -4,4 +4,6 @@ weight: 1
 archetype: home
 ---
 
-![](fmg-diag.png)
+![](fmg-diag1.png)
+
+![](fmg-diag2.png)
