@@ -22,3 +22,7 @@ Before attempting to create a stack with the template, a few prerequisites shoul
 5.  If BYOL licensing is to be used, upload these licenses to the root directory of the same S3 bucket from the step above.
 
 6.  **Ensure that the PublicSubnet's AWS route table has a default route to an AWS Internet Gateway, otherwise bootstrapping and licensing will fail.**  Reference [**AWS Documentation**](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html#route-tables-internet-gateway) for further information.
+
+7.  If using the existing VPC template and you are deploying into private subnets, **ensure an S3 endpoint is deployed in that subnet and that a VPC route allows reachability to FortiCloud for license validation and PAYG registration**.
+
+8. If PAYG licensing is to be used, you will need to configure HA peers as the serial numbers are generated on first boot. First login via SSH or serial console and get the serial number ```get system status```, then register this in FortiCloud. Next, reboot the instances ```exec reboot```. In the GUI navigate to **Sytem Settings > HA** and add the primary interface IP and serial number of the HA peer on both instances.
