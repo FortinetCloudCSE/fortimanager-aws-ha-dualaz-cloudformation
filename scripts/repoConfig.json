@@ -1,7 +1,7 @@
 {
-  "repoName":"UserRepo",
-  "author":"Jeff Kopko",
-  "workshopTitle":"Hugo for Fortinet TECWorkshops",
+  "repoName":"fortimanager-aws-ha-dualaz-cloudformation",
+  "author":"Hiruy Aberra",
+  "workshopTitle":"fortimanager-aws-ha-dualaz-cloudformation",
   "themeVariant":"Workshop",
   "logoBannerText":"",
   "logoBannerSubText":"",
@@ -16,22 +16,16 @@
     "weight":10
   },
   {
-    "text": "Fortinet Standard Workshop Guide",
-    "URL": "https://fortinetcloudcse.github.io/UserRepo",
-    "icon": "fa-tools",
+    "text": "Fortinet in AWS Docs",
+    "URL": "https://docs.fortinet.com/cloud-solutions/aws",
+    "icon": "fa-chalkboard-teacher",
     "weight":20
   },
   {
-    "text": "Fortinet Standard Workshop Template Repo",
-    "URL": "https://github.com/FortinetCloudCSE/UserRepo",
+    "text": "AWS MP Listings for Fortinet",
+    "URL": "https://aws.amazon.com/marketplace/search/results?searchTerms=fortinet",
     "icon": "fa-tools",
     "weight":30
-  },
-  {
-    "text": "Fortinet Hugo reLearn theme - Guide",
-    "URL": "https://mcshelby.github.io/hugo-theme-relearn/index.html",
-    "icon": "fa-tools",
-    "weight":40
   }
-  ]
+]
 }
