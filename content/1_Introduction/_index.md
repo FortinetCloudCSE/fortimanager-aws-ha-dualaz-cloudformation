@@ -4,7 +4,7 @@ menuTitle: "Introduction"
 weight: 10
 ---
 
-![](./fmg-diag.png)
+![](./fmg-diag1.png)
 
 ## Welcome
 
