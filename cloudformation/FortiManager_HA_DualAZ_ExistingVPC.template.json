@@ -1,6 +1,6 @@
 {
 	"AWSTemplateFormatVersion": "2010-09-09",
-	"Description": "(v8.7) AWS CFT to deploy a FortiManager HA pair into an existing VPC",
+	"Description": "(v9.0) AWS CFT to deploy a FortiManager HA pair into an existing VPC",
 	"Metadata": {
 		"AWS::CloudFormation::Interface": {
 			"ParameterGroups": [
@@ -24,7 +24,7 @@
 						"CIDRForInstanceAccess",
 						"KeyPair",
 						"EncryptVolumes",
-						"FortiManagerVersion",
+						"FortiMaßnagerVersion",
 						"LicenseType",
 						"InitS3Bucket",
 						"FortiManager1SerialNumber",
@@ -65,8 +65,8 @@
 			"Type": "String",
 			"Default": "10.1.0.0/16",
 			"Description": "Provide a network CIDR for the VPC",
-			"AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]){1}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$",
-			"ConstraintDescription": "must be a valid CIDR block format."
+			"AllowedPattern": "(\\d{1,3}\\.){3}\\d{1,3}/\\d{1,2}",
+			"ConstraintDescription": "Must be a valid CIDR block format."
 		},
 		"PublicSubnet1": {
 			"Type": "AWS::EC2::Subnet::Id",
@@ -80,29 +80,29 @@
 			"Type": "String",
 			"Default": "10.1.1.10/24",
 			"Description": "Provide the primary IP address in CIDR form for FortiManager1 to use (IP from PublicSubnet1)",
-			"AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]){1}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$",
-			"ConstraintDescription": "must be a valid CIDR block format."
+			"AllowedPattern": "(\\d{1,3}\\.){3}\\d{1,3}/\\d{1,2}",
+			"ConstraintDescription": "Must be a valid CIDR block format."
 		},
 		"FortiManager1SecondaryIP": {
 			"Type": "String",
 			"Default": "10.1.1.11/24",
 			"Description": "Provide the secondary IP address in CIDR form for FortiManager1 to use (IP from PublicSubnet1)",
-			"AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]){1}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$",
-			"ConstraintDescription": "must be a valid CIDR block format."
+			"AllowedPattern": "(\\d{1,3}\\.){3}\\d{1,3}/\\d{1,2}",
+			"ConstraintDescription": "Must be a valid CIDR block format."
 		},
 		"FortiManager2PrimaryIP": {
 			"Type": "String",
 			"Default": "10.1.10.10/24",
 			"Description": "Provide the primary IP address in CIDR form for FortiManager2 to use (IP from PublicSubnet2)",
-			"AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]){1}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$",
-			"ConstraintDescription": "must be a valid CIDR block format."
+			"AllowedPattern": "(\\d{1,3}\\.){3}\\d{1,3}/\\d{1,2}",
+			"ConstraintDescription": "Must be a valid CIDR block format."
 		},
 		"FortiManager2SecondaryIP": {
 			"Type": "String",
 			"Default": "10.1.10.11/24",
 			"Description": "Provide the secondary IP address in CIDR form for FortiManager2 to use (IP from PublicSubnet2)",
-			"AllowedPattern": "^(([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])\\.){3}([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5]){1}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$",
-			"ConstraintDescription": "must be a valid CIDR block format."
+			"AllowedPattern": "(\\d{1,3}\\.){3}\\d{1,3}/\\d{1,2}",
+			"ConstraintDescription": "Must be a valid CIDR block format."
 		},
 		"InstanceType": {
 			"Type": "String",
@@ -141,7 +141,9 @@
 		"CIDRForInstanceAccess": {
 			"Type": "String",
 			"Default": "0.0.0.0/0",
-			"Description": "Provide a network CIDR from which the FortiManager instances will be accessed"
+			"Description": "Provide a network CIDR from which the FortiManager instances will be accessed",
+			"AllowedPattern": "(\\d{1,3}\\.){3}\\d{1,3}/\\d{1,2}",
+			"ConstraintDescription": "Must be a valid CIDR block format."
 		},
 		"KeyPair": {
 			"Type": "AWS::EC2::KeyPair::KeyName",
@@ -161,10 +163,9 @@
 		},
 		"FortiManagerVersion": {
 			"Type": "String",
-			"Default": "7.4.x",
+			"Default": "7.6.x",
 			"Description": "Select the verion of FortiManager to use (latest GA AMI will be used)",
 			"AllowedValues": [
-				"7.2.x",
 				"7.4.x",
 				"7.6.x"
 			]
@@ -208,15 +209,6 @@
 	},
 	"Mappings": {
 		"FortiManagerAMISearchString": {
-			"7.2.x": {
-				"BYOL": "FortiManager-VM64-AWS *(7.2.*)*|os40mk0fw6472m8ak2lnzp4s",
-				"Flex": "FortiManager-VM64-AWS *(7.2.*)*|os40mk0fw6472m8ak2lnzp4s",
-				"PAYG2Devices": "FortiManager-VM64-AWSONDEMAND *(7.2.*)*|5j3m869sh84tixvmg9br26hkn",
-				"PAYG10Devices": "FortiManager-VM64-AWSONDEMAND *(7.2.*)*|691k7ni0x5sbcj3reejxw3cy1",
-				"PAYG30Devices": "FortiManager-VM64-AWSONDEMAND *(7.2.*)*|8gmpxt177zhq1vhh32l7o69wf",
-				"PAYG100Devices": "FortiManager-VM64-AWSONDEMAND *(7.2.*)*|d3o35cw8hzusqeiv83jl1xuwb",
-				"PAYG500Devices": "FortiManager-VM64-AWSONDEMAND *(7.2.*)*|e5s6s9r3hgizwpe9tavoxwkzv"
-			},
 			"7.4.x": {
 				"BYOL": "FortiManager-VM64-AWS *(7.4.*)*|os40mk0fw6472m8ak2lnzp4s",
 				"Flex": "FortiManager-VM64-AWS *(7.4.*)*|os40mk0fw6472m8ak2lnzp4s",
@@ -564,15 +556,7 @@
 					{
 						"Key": "Name",
 						"Value": {
-							"Fn::Join": [
-								"",
-								[
-									{
-										"Ref": "AWS::StackName"
-									},
-									"-FortiManager1"
-								]
-							]
+							"Fn::Sub": "${AWS::StackName}-FortiManager1"
 						}
 					}
 				],
@@ -581,42 +565,7 @@
 						"Fn::If": [
 							"BYOL",
 							{
-								"Fn::Join": [
-									"",
-									[
-										"{\n",
-										"\"bucket\"",
-										" : \"",
-										{
-											"Ref": "InitS3Bucket"
-										},
-										"\"",
-										",\n",
-										"\"region\"",
-										" : ",
-										"\"",
-										{
-											"Ref": "AWS::Region"
-										},
-										"\"",
-										",\n",
-										"\"license\"",
-										" : ",
-										"\"",
-										"/",
-										{
-											"Ref": "FortiManager1LicenseFile"
-										},
-										"\"",
-										",\n",
-										"\"config\"",
-										" : ",
-										"\"",
-										"/fmg1-config.txt\"",
-										"\n",
-										"}"
-									]
-								]
+								"Fn::Sub": "{\"bucket\":\"${InitS3Bucket}\",\"region\":\"${AWS::Region}\",\"license\":\"/${FortiManager1LicenseFile}\",\"config\":\"/fmg1-config.txt\"}"
 							},
 							{
 								"Fn::Join": [
@@ -773,6 +722,19 @@
 											"Fn::Join": [
 												"",
 												[
+													"set password ",
+													{
+														"Fn::Base64": {
+															"Ref": "AWS::AccountId"
+														}
+													}
+												]
+											]
+										},
+										{
+											"Fn::Join": [
+												"",
+												[
 													"set vip ",
 													{
 														"Ref": "FmgClusterEIP"
@@ -889,15 +851,7 @@
 					{
 						"Key": "Name",
 						"Value": {
-							"Fn::Join": [
-								"",
-								[
-									{
-										"Ref": "AWS::StackName"
-									},
-									"-fmg1eni0"
-								]
-							]
+							"Fn::Sub": "${AWS::StackName}-fmg1eni0"
 						}
 					},
 					{
@@ -965,15 +919,7 @@
 					{
 						"Key": "Name",
 						"Value": {
-							"Fn::Join": [
-								"",
-								[
-									{
-										"Ref": "AWS::StackName"
-									},
-									"-FortiManager1"
-								]
-							]
+							"Fn::Sub": "${AWS::StackName}-FortiManager1"
 						}
 					}
 				]
@@ -1019,15 +965,7 @@
 					{
 						"Key": "Name",
 						"Value": {
-							"Fn::Join": [
-								"",
-								[
-									{
-										"Ref": "AWS::StackName"
-									},
-									"-FortiManagerCluster"
-								]
-							]
+							"Fn::Sub": "${AWS::StackName}-FortiManagerCluster"
 						}
 					}
 				]
@@ -1119,15 +1057,7 @@
 					{
 						"Key": "Name",
 						"Value": {
-							"Fn::Join": [
-								"",
-								[
-									{
-										"Ref": "AWS::StackName"
-									},
-									"-FortiManager2"
-								]
-							]
+							"Fn::Sub": "${AWS::StackName}-FortiManager2"
 						}
 					}
 				],
@@ -1136,42 +1066,7 @@
 						"Fn::If": [
 							"BYOL",
 							{
-								"Fn::Join": [
-									"",
-									[
-										"{\n",
-										"\"bucket\"",
-										" : \"",
-										{
-											"Ref": "InitS3Bucket"
-										},
-										"\"",
-										",\n",
-										"\"region\"",
-										" : ",
-										"\"",
-										{
-											"Ref": "AWS::Region"
-										},
-										"\"",
-										",\n",
-										"\"license\"",
-										" : ",
-										"\"",
-										"/",
-										{
-											"Ref": "FortiManager2LicenseFile"
-										},
-										"\"",
-										",\n",
-										"\"config\"",
-										" : ",
-										"\"",
-										"/fmg2-config.txt\"",
-										"\n",
-										"}"
-									]
-								]
+								"Fn::Sub": "{\"bucket\":\"${InitS3Bucket}\",\"region\":\"${AWS::Region}\",\"license\":\"/${FortiManager2LicenseFile}\",\"config\":\"/fmg2-config.txt\"}"
 							},
 							{
 								"Fn::Join": [
@@ -1328,6 +1223,19 @@
 											"Fn::Join": [
 												"",
 												[
+													"set password ",
+													{
+														"Fn::Base64": {
+															"Ref": "AWS::AccountId"
+														}
+													}
+												]
+											]
+										},
+										{
+											"Fn::Join": [
+												"",
+												[
 													"set vip ",
 													{
 														"Ref": "FmgClusterEIP"
@@ -1444,15 +1352,7 @@
 					{
 						"Key": "Name",
 						"Value": {
-							"Fn::Join": [
-								"",
-								[
-									{
-										"Ref": "AWS::StackName"
-									},
-									"-fmg2eni0"
-								]
-							]
+							"Fn::Sub": "${AWS::StackName}-fmg2eni0"
 						}
 					},
 					{
@@ -1520,15 +1420,7 @@
 					{
 						"Key": "Name",
 						"Value": {
-							"Fn::Join": [
-								"",
-								[
-									{
-										"Ref": "AWS::StackName"
-									},
-									"-FortiManager2"
-								]
-							]
+							"Fn::Sub": "${AWS::StackName}-FortiManager2"
 						}
 					}
 				]
@@ -1676,7 +1568,7 @@
 				},
 				"Timeout": 120,
 				"Handler": "index.handler",
-				"Runtime": "python3.9",
+				"Runtime": "python3.12",
 				"MemorySize": 128
 			}
 		},
@@ -1881,6 +1773,7 @@
 								"config system ha",
 								"set failover-mode vrrp",
 								"set unicast enable",
+								"set password {HaPassword}",
 								"set vip {HaVip}",
 								"set vrrp-interface port1",
 								"config peer",
@@ -1965,7 +1858,7 @@
 				},
 				"Timeout": 120,
 				"Handler": "index.handler",
-				"Runtime": "python3.9",
+				"Runtime": "python3.12",
 				"MemorySize": 128
 			}
 		},
@@ -1996,6 +1889,21 @@
 											"Ref": "AWS::StackName"
 										},
 										"-Fmg1"
+									]
+								]
+							},
+							"',",
+							"'HaPassword':',",
+							{
+								"Fn::Join": [
+									"",
+									[
+										"set password ",
+										{
+											"Fn::Base64": {
+												"Ref": "AWS::AccountId"
+											}
+										}
 									]
 								]
 							},
@@ -2047,6 +1955,21 @@
 								]
 							},
 							"',",
+							"'HaPassword':',",
+							{
+								"Fn::Join": [
+									"",
+									[
+										"set password ",
+										{
+											"Fn::Base64": {
+												"Ref": "AWS::AccountId"
+											}
+										}
+									]
+								]
+							},
+							"',",
 							"'HaPeerIp':'",
 							{
 								"Fn::Select": [
@@ -2090,43 +2013,19 @@
 		},
 		"FortiManager1LoginURL": {
 			"Value": {
-				"Fn::Join": [
-					"",
-					[
-						"https://",
-						{
-							"Ref": "Fmg1EIP"
-						}
-					]
-				]
+				"Fn::Sub": "https://${Fmg1EIP}"
 			},
 			"Description": "Login URL for FortiManager1"
 		},
 		"FortiManager2LoginURL": {
 			"Value": {
-				"Fn::Join": [
-					"",
-					[
-						"https://",
-						{
-							"Ref": "Fmg2EIP"
-						}
-					]
-				]
+				"Fn::Sub": "https://${Fmg2EIP}"
 			},
 			"Description": "Login URL for FortiManager2"
 		},
 		"ClusterLoginURL": {
 			"Value": {
-				"Fn::Join": [
-					"",
-					[
-						"https://",
-						{
-							"Ref": "FmgClusterEIP"
-						}
-					]
-				]
+				"Fn::Sub": "https://${FmgClusterEIP}"
 			},
 			"Description": "Login URL for Cluster"
 		}
