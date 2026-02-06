@@ -7,6 +7,7 @@ weight: 20
 Before attempting to create a stack with the template, a few prerequisites should be checked to ensure a successful deployment:
 1.	An AMI subscription must be active for the FortiManager license type being used in the template.
     * [**BYOL Marketplace Listing**](https://aws.amazon.com/marketplace/pp/prodview-l6rxheua5mbls)
+    * [**PAYG SCALE Marketplace Listing**](https://aws.amazon.com/marketplace/pp/prodview-jphf6k3dqwibw)
     * [**PAYG (Max 2 Devices) Marketplace Listing**](https://aws.amazon.com/marketplace/pp/prodview-sxkylaodc2l5s)
     * [**PAYG (Max 10 Devices) Marketplace Listing**](https://aws.amazon.com/marketplace/pp/prodview-4rgupihrc4lgq)
     * [**PAYG (Max 30 Devices) Marketplace Listing**](https://aws.amazon.com/marketplace/pp/prodview-mnbyo52dmz6u2)
